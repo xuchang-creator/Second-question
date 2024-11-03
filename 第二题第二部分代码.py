@@ -5,7 +5,7 @@ from appium import webdriver
 from appium.options.android import UiAutomator2Options
 import time
 
-from sympy.core.benchmarks.bench_numbers import timeit_neg_one
+
 
 url = "http://10.100.1.24:8988/web/Common/Tsm.html"
 #获取用户请求
