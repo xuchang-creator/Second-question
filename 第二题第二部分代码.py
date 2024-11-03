@@ -43,7 +43,7 @@ headers = {
 response = requests.post(url=url, data=data_r, headers=headers)
 elec=response.json().get("query_elec_roominfo").get("errmsg")
 
-a=0
+a=1
 while a<=in_count:
   # 创建模拟器
   server = "http://localhost:4723/wd/hub"
