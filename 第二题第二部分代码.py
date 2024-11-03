@@ -13,6 +13,7 @@ in_building=input("请输入你所在的楼栋：")
 in_buildingid=(input("请输入楼栋id："))
 in_room=(input("请输入房间号："))
 in_num=int(input("请输入你期望的提醒的频率(*小时/次)："))
+in_count=int(input("请输入你期望的提醒的次数："))
 num=in_num*3600
 #制作请求所需的参数
 in_jsondata={ "query_elec_roominfo": { "aid":"0030000000002505", "account": "367686","room": { "roomid": f'{in_room}', "room": f"{in_room}" },  "floor": { "floorid": "", "floor": "" }, "area": { "area": "青岛校区", "areaname": "青岛校区" }, "building": { "buildingid": f"{in_buildingid}", "building": f"{in_building}" } } }
@@ -43,7 +44,7 @@ response = requests.post(url=url, data=data_r, headers=headers)
 elec=response.json().get("query_elec_roominfo").get("errmsg")
 
 a=0
-while a<=30:
+while a<=in_count:
   # 创建模拟器
   server = "http://localhost:4723/wd/hub"
   options = UiAutomator2Options().load_capabilities({
@@ -106,7 +107,3 @@ while a<=30:
   sixt = driver.find_element("xpath", '''//android.widget.Button[@text="继续发送"]''')
   sixt.click()
   time.sleep(num)
-
-
-
-
